@@ -1,1 +1,5 @@
-/* Base */
+* {
+
+  box-sizing: border-box;
+
+}

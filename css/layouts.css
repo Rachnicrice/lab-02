@@ -1,1 +1,36 @@
-/* Layout */
+  body {
+    max-width : 960px;
+  }
+
+
+  section {
+    float: left;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    width: 400px;
+    height: 400px;
+    margin-top: 50px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+  };
+
+  section:first-of-type {
+  display: none ;
+  };
+
+  img {
+
+    width: 400px;
+    height: 400px;
+    object-fit: scale-down;
+
+}
+
+
+
+footer {
+
+  clear: both;
+}
