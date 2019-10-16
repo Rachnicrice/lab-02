@@ -19,5 +19,7 @@ Horn.prototype.render = function() {
   const myHornTemp = $('#horn-temp').html();
   const $newSection = $('<section></section>');
   $newSection.html(myHornTemp)
+
+  $newSection.find('h2').text(thi)
 }
 
