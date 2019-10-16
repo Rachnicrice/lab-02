@@ -12,13 +12,13 @@ function Horn(horn) {
   allHorn.push(this);
 }
 
-$.get('../page-1.json'), data => {
+$.get('../page-1.json', data => {
   data.forEach(horn => {
     let insturement = new Horn(horn)
     insturement.render(); 
   });
   console.log(allHorn);
-}
+});
 
 Horn.prototype.render = function() {
   const myHornTemp = $('#horn-temp').html();
