@@ -37,7 +37,13 @@
 
 ### Feature 3: Styling with Flexbox
 - Time Estimated: 40 minutes
-- Start Time: 12:45
+- Start Time: 12:45pm
+- Finish Time: 1:09pm
+- Actual Time: 24 minutes
+
+### Feature 4: Sort the Images
+- Time Estimated: 1 hour 55 minutes
+- Start Time:
 - Finish Time:
 - Actual Time:
 
