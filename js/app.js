@@ -1,5 +1,13 @@
 'use strict';
 
+
+
+Horn.prototype.toHtml = function () {
+  let source   = $("horn-template").html();
+  let template = Handlebars.compile(source);
+  return template
+}
+
 const allHorn = [] ;
 const allKeywords = [];
 const newKeywords = [];

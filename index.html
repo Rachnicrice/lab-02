@@ -9,7 +9,15 @@
       <link href="css/layouts.css" rel="stylesheet"/>
       <link href="css/modules.css" rel="stylesheet"/>
       <link id="avast_os_ext_custom_font" href="chrome-extension://eofcbnmajmjmplflapaojjnihcjkigck/common/ui/fonts/fonts.css" rel="stylesheet" type="text/css">
-  </head>
+      <script id="horn-template" type="text/x-handlebars-template">
+        <div>
+          <h2>{{title}}</h2>
+          <p> {{description}}</p>
+          <img src="{{image_url}}" alt="">
+          {{{body}}}
+        </div>
+      </script>
+    </head>
   <body>
     <header>
       <h1>The Gallery of Horns</h1>
