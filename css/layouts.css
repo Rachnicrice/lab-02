@@ -1,36 +1,36 @@
-  body {
-    max-width : 960px;
-  }
-
-
-  section {
-    float: left;
-    border-style: solid;
-    border-width: 3px;
-    border-color: black;
-    width: 400px;
-    height: 400px;
-    margin-top: 50px;
-    position: relative;
-    text-align: center;
-    overflow: hidden;
-  };
-
-  section:first-of-type {
-  display: none ;
-  };
-
-  img {
-
-    width: 400px;
-    height: 400px;
-    object-fit: scale-down;
-
+html {
+  max-width: 960px;
+  margin: auto;
 }
 
+header {
+  margin: auto;
+}
 
+section {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+}
+
+div {
+  max-height: 360px;
+  width: 360px;
+  margin: 10px;
+}
+
+img {
+  object-fit: contain;
+  max-width: 100%;
+  padding: 20px;
+}
+
+button {
+  height: 50px;
+  width: 100px;
+  float: right;
+}
 
 footer {
-
   clear: both;
 }

@@ -31,7 +31,7 @@ function page1 () {
       insturement.renderKeywords();
     });
     console.log(allHorn);
-    allHorn.forEach(data => {
+    allHorn.forEach(function (data) {
       $('#horn-temp').append(data.toHtml());
     });
   });
@@ -39,8 +39,6 @@ function page1 () {
 
 function page2 () {
   allHorn = [] ;
-  // allKeywords = [];
-  // newKeywords = [];
   $.get('../page-2.json', data => {
     allKeywords = [];
     newKeywords = [];
@@ -51,7 +49,7 @@ function page2 () {
       insturement.renderKeywords();
     });
     console.log(allHorn);
-    allHorn.forEach(data => {
+    allHorn.forEach(function (data) {
       $('#horn-temp').append(data.toHtml());
     });
   });
@@ -82,25 +80,18 @@ Horn.prototype.renderKeywords = function () {
 
 
 $('select').change(function () {
-  console.log(allHorn)
   let filter = $(this).val();
   console.log(filter)
 
-  if (filter === 'default') {
-    allHorn.forEach( function (thing) {
-      $(`${thing.keyword}`).fadeIn();
-    })
+  if (filter !== 'all') {
+    $(`div`).hide();
+    $(`#${filter}`).fadeIn();
   } else {
-    allHorn.forEach( function (obj) {
-      if (filter === obj.keyword) {
-        $(`.${obj.keyword}`).fadeIn()
-      } else {
-        $(`.${obj.keyword}`).hide()
-      }
-    })
+    $('div').fadeIn();
   }
 
 })
+
 
 page1();
 
@@ -117,3 +108,4 @@ $('button').on('click', function(){
     page2();
   }
 })
+
