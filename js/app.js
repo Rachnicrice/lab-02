@@ -3,9 +3,9 @@
 
 
 Horn.prototype.toHtml = function () {
-  let source   = $("horn-template").html();
+  let source   = $("#horn-template").html();
   let template = Handlebars.compile(source);
-  return template
+  return template(this);
 }
 
 const allHorn = [] ;
@@ -32,6 +32,7 @@ $.get('../page-1.json', data => {
   });
   console.log(allHorn);
 });
+
 };
 
 function page2 () {
@@ -46,16 +47,19 @@ $.get('../page-2.json', data => {
 };
 
 Horn.prototype.render = function() {
-  const myHornTemp = $('#horn-temp').html();
-  const $newSection = $('<section></section>');
-  $newSection.html(myHornTemp)
-  $newSection.addClass(this.keyword)
+  // const myHornTemp = $('#horn-temp').html();
+  // const $newSection = $('<section></section>');
+  // $newSection.html(myHornTemp)
+  // $newSection.addClass(this.keyword)
 
-  $newSection.find('h2').text(this.title)
-  $newSection.find('img').attr('src', this.image_url)
-  $newSection.find('p').text(this.description)
+  // $newSection.find('h2').text(this.title)
+  // $newSection.find('img').attr('src', this.image_url)
+  // $newSection.find('p').text(this.description)
 
-  $('main').append($newSection);
+  // $('main').append($newSection);
+  allHorn.forEach(data => {
+    $('#horn-temp').append(data.toHtml());
+  });
 }
 
 Horn.prototype.renderKeywords = function () {
