@@ -1,16 +1,14 @@
 'use strict';
 
-
-
 Horn.prototype.toHtml = function () {
-  let source   = $("#horn-template").html();
+  let source   = $('#horn-template').html();
   let template = Handlebars.compile(source);
   return template(this);
 }
 
-const allHorn = [] ;
-const allKeywords = [];
-const newKeywords = [];
+let allHorn = [] ;
+let allKeywords = [];
+let newKeywords = [];
 
 function Horn(horn) {
   this.title = horn.title;
@@ -24,39 +22,42 @@ function Horn(horn) {
 }
 
 function page1 () {
-$.get('../page-1.json', data => {
-  data.forEach(horn => {
-    let insturement = new Horn(horn);
-    insturement.render();
-    insturement.renderKeywords();
+  $.get('../page-1.json', data => {
+    allHorn = [] ;
+    allKeywords = [];
+    newKeywords = [];
+    data.forEach(horn => {
+      let insturement = new Horn(horn);
+      insturement.renderKeywords();
+    });
+    console.log(allHorn);
+    allHorn.forEach(data => {
+      $('#horn-temp').append(data.toHtml());
+    });
   });
-  console.log(allHorn);
-});
-
-};
+}
 
 function page2 () {
-$.get('../page-2.json', data => {
-  data.forEach(horn => {
-    let insturement = new Horn(horn);
-    insturement.render();
-    insturement.renderKeywords();
+  allHorn = [] ;
+  // allKeywords = [];
+  // newKeywords = [];
+  $.get('../page-2.json', data => {
+    allKeywords = [];
+    newKeywords = [];
+    console.log("unique", newKeywords)
+    console.log("all of them", allKeywords)
+    data.forEach(horn => {
+      let insturement = new Horn(horn);
+      insturement.renderKeywords();
+    });
+    console.log(allHorn);
+    allHorn.forEach(data => {
+      $('#horn-temp').append(data.toHtml());
+    });
   });
-  console.log(allHorn);
-});
-};
+}
 
-Horn.prototype.render = function() {
-  // const myHornTemp = $('#horn-temp').html();
-  // const $newSection = $('<section></section>');
-  // $newSection.html(myHornTemp)
-  // $newSection.addClass(this.keyword)
-
-  // $newSection.find('h2').text(this.title)
-  // $newSection.find('img').attr('src', this.image_url)
-  // $newSection.find('p').text(this.description)
-
-  // $('main').append($newSection);
+Horn.prototype.render = function () {
   allHorn.forEach(data => {
     $('#horn-temp').append(data.toHtml());
   });
@@ -75,13 +76,12 @@ Horn.prototype.renderKeywords = function () {
       $newOption.attr(allKeywords[i])
 
       $('#menu').append($newOption)
-
     }
   }
 }
 
 
-$('select').change(function (event) {
+$('select').change(function () {
   console.log(allHorn)
   let filter = $(this).val();
   console.log(filter)
@@ -99,20 +99,21 @@ $('select').change(function (event) {
       }
     })
   }
-  
+
 })
 
 page1();
 
-$('button').on('click', function(e){
+$('button').on('click', function(){
   let clicked = $(this).attr('id');
   console.log(clicked);
-  if ( clicked === 'one') { 
-  $('#horn-temp').siblings().remove();
-  location.reload();
-  page1();
+  if ( clicked === 'one') {
+    $('#horn-temp').empty();
+    $('select').empty();
+    page1();
   } else if (clicked === 'two') {
-  $('#horn-temp').siblings().remove();
-  page2();
+    $('#horn-temp').empty();
+    $('select').empty();
+    page2();
   }
 })
