@@ -1,5 +1,13 @@
 'use strict';
 
+
+
+Horn.prototype.toHtml = function () {
+  let source   = $("#horn-template").html();
+  let template = Handlebars.compile(source);
+  return template(this);
+}
+
 const allHorn = [] ;
 const allKeywords = [];
 const newKeywords = [];
@@ -15,6 +23,7 @@ function Horn(horn) {
   allKeywords.push(this.keyword);
 }
 
+function page1 () {
 $.get('../page-1.json', data => {
   data.forEach(horn => {
     let insturement = new Horn(horn);
@@ -24,17 +33,33 @@ $.get('../page-1.json', data => {
   console.log(allHorn);
 });
 
+};
+
+function page2 () {
+$.get('../page-2.json', data => {
+  data.forEach(horn => {
+    let insturement = new Horn(horn);
+    insturement.render();
+    insturement.renderKeywords();
+  });
+  console.log(allHorn);
+});
+};
+
 Horn.prototype.render = function() {
-  const myHornTemp = $('#horn-temp').html();
-  const $newSection = $('<section></section>');
-  $newSection.html(myHornTemp)
-  $newSection.addClass(this.keyword)
+  // const myHornTemp = $('#horn-temp').html();
+  // const $newSection = $('<section></section>');
+  // $newSection.html(myHornTemp)
+  // $newSection.addClass(this.keyword)
 
-  $newSection.find('h2').text(this.title)
-  $newSection.find('img').attr('src', this.image_url)
-  $newSection.find('p').text(this.description)
+  // $newSection.find('h2').text(this.title)
+  // $newSection.find('img').attr('src', this.image_url)
+  // $newSection.find('p').text(this.description)
 
-  $('main').append($newSection);
+  // $('main').append($newSection);
+  allHorn.forEach(data => {
+    $('#horn-temp').append(data.toHtml());
+  });
 }
 
 Horn.prototype.renderKeywords = function () {
@@ -55,6 +80,7 @@ Horn.prototype.renderKeywords = function () {
   }
 }
 
+
 $('select').change(function (event) {
   console.log(allHorn)
   let filter = $(this).val();
@@ -74,4 +100,19 @@ $('select').change(function (event) {
     })
   }
   
+})
+
+page1();
+
+$('button').on('click', function(e){
+  let clicked = $(this).attr('id');
+  console.log(clicked);
+  if ( clicked === 'one') { 
+  $('#horn-temp').siblings().remove();
+  location.reload();
+  page1();
+  } else if (clicked === 'two') {
+  $('#horn-temp').siblings().remove();
+  page2();
+  }
 })
