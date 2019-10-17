@@ -10,7 +10,7 @@
       <link href="css/modules.css" rel="stylesheet"/>
       <link id="avast_os_ext_custom_font" href="chrome-extension://eofcbnmajmjmplflapaojjnihcjkigck/common/ui/fonts/fonts.css" rel="stylesheet" type="text/css">
       <script id="horn-template" type="text/x-handlebars-template">
-        <div>
+        <div id="{{keyword}}">
           <h2>{{title}}</h2>
           <p> {{description}}</p>
           <img src="{{image_url}}" alt="">
@@ -31,7 +31,7 @@
       </button>
     </aside>
     <select id="menu">
-      <option value="default">All</option>
+      <option value="all">All</option>
     </select>
     <main>
       <section id="horn-temp">
