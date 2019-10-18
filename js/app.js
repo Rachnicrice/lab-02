@@ -22,7 +22,7 @@ function Horn(horn) {
 }
 
 function page1 () {
-  $.get('../page-1.json', data => {
+  $.get('page-1.json', data => {
     allHorn = [] ;
     allKeywords = [];
     newKeywords = [];
@@ -39,7 +39,7 @@ function page1 () {
 
 function page2 () {
   allHorn = [] ;
-  $.get('../page-2.json', data => {
+  $.get('page-2.json', data => {
     allKeywords = [];
     newKeywords = [];
     console.log("unique", newKeywords)
