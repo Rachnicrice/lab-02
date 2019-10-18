@@ -43,8 +43,8 @@
 
 ### Feature 4: Sort the Images
 - Time Estimated: 1 hour 55 minutes
-- Start Time:
-- Finish Time:
-- Actual Time:
+- Start Time: 8:00am
+- Finish Time: 8:21am
+- Actual Time: 21 minutes
 
 
