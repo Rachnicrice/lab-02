@@ -78,8 +78,28 @@ Horn.prototype.renderKeywords = function () {
   }
 }
 
+function sortImages (sortOrder) {
+  allHorn.sort((a, b) => {
+    if (sortOrder === 'horns') {
 
-$('select').change(function () {
+      return a.horns - b.horns;
+
+    } else if (sortOrder === 'name') {
+
+      if (a.title < b.title) {
+        return -1
+      } else if (a.title > b.title) {
+        return 1;
+      } else {
+        return 0;
+      }
+
+    }
+  })
+}
+
+$('select').change(function (e) {
+  e.preventDefault();
   let filter = $(this).val();
   console.log(filter)
 
@@ -91,9 +111,6 @@ $('select').change(function () {
   }
 
 })
-
-
-page1();
 
 $('button').on('click', function(){
   let clicked = $(this).attr('id');
@@ -109,3 +126,19 @@ $('button').on('click', function(){
   }
 })
 
+$('#sort').change(function (e){
+
+  e.preventDefault();
+  console.log($('#sort').val());
+  let sortBy = $('#sort').val();
+
+  $('div').hide();
+
+  sortImages(sortBy);
+
+  allHorn.forEach(function (data) {
+    $('#horn-temp').append(data.toHtml());
+  });
+})
+
+page1();
